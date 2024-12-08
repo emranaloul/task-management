@@ -1,0 +1,33 @@
+.button {
+  width: 254px;
+  height: 48px;
+  padding: 12.5px 24px 12.5px 24px;
+  gap: 8px;
+  border-radius: 8px;
+  font-family: Quicksand;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22.5px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  border-width: 0;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.button.outlined {
+  background-color: #f2f5ff;
+  color: #395bd3;
+}
+.button.outlined:hover {
+  background-color: #dadbdd;
+}
+
+.button.solid {
+  background-color: #395bd3;
+  color: #ffffff;
+}
+.button.solid:hover {
+  background-color: blue;
+  color: #ffffff;
+}
