@@ -6,8 +6,8 @@ svg {
 
 circle {
   fill: none;
-  stroke: hsl(214, 97%, 59%);
-  stroke-width: 2;
+  stroke: blue;
+  stroke-width: 5;
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
