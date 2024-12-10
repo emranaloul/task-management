@@ -1,15 +1,21 @@
 import React, { FC } from 'react';
-import './Button.css';
 
 type PropTypes = {
   children?: React.ReactNode;
-  variant: 'outlined' | 'solid';
+  color?: 'primary' | 'danger' | 'secondary';
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  iconSrc?: string;
 };
-const Button: FC<PropTypes> = ({ variant = 'solid', children, onClick }) => {
+const Button: FC<PropTypes> = ({
+  children,
+  onClick,
+  iconSrc,
+  color = 'primary',
+}) => {
   return (
-    <button onClick={onClick} className={`button ${variant}`}>
-      {children}
+    <button onClick={onClick} className={`button ${color}`}>
+      {iconSrc && <img src={iconSrc} alt='icon' />}
+      <span>{children}</span>
     </button>
   );
 };

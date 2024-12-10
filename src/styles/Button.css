@@ -1,5 +1,7 @@
 .button {
-  width: 254px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 48px;
   padding: 12.5px 24px 12.5px 24px;
   gap: 8px;
@@ -13,21 +15,30 @@
   border-width: 0;
   cursor: pointer;
   text-transform: capitalize;
+  flex: 1 1 100%;
 }
 
-.button.outlined {
+.button.secondary {
   background-color: #f2f5ff;
   color: #395bd3;
 }
-.button.outlined:hover {
+.button.secondary:hover {
   background-color: #dadbdd;
 }
 
-.button.solid {
+.button.primary {
   background-color: #395bd3;
   color: #ffffff;
 }
-.button.solid:hover {
+.button.primary:hover {
   background-color: blue;
+  color: #ffffff;
+}
+.button.danger {
+  background-color: #FF3093;
+  color: #ffffff;
+}
+.button.danger:hover {
+  background-color: #ff3094ce;
   color: #ffffff;
 }

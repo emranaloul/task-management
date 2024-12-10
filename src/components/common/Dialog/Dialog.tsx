@@ -1,6 +1,5 @@
+import { FC, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import './Dialog.css';
-import { FC } from 'react';
 
 type PropType = {
   children: React.ReactNode;
@@ -8,19 +7,22 @@ type PropType = {
   onClose?: () => void;
 };
 const Dialog: FC<PropType> = ({ isOpen, children, onClose }) => {
-  if (!isOpen) return null;
+  const dialogRef = useRef<HTMLDivElement | null>(null);
 
-  return createPortal(
-    <div
-      className='modal-overlay'
-      onClick={(e) => {
-        e.stopPropagation();
+  useEffect(() => {
+    const closeHandler = (e: MouseEvent) => {
+      if (e.target === dialogRef.current && isOpen) {
         onClose?.();
-      }}
-    >
-      <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-        {children}
-      </div>
+      }
+    };
+
+    window.addEventListener('click', closeHandler);
+    return () => window.removeEventListener('click', closeHandler);
+  }, [isOpen, onClose]);
+  if (!isOpen) return null;
+  return createPortal(
+    <div className='modal-overlay' ref={dialogRef}>
+      <div className='modal-content'>{children}</div>
     </div>,
     document.body
   );

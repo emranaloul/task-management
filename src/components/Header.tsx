@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import Add from '../assets/Add.png';
 import Dialog from './common/Dialog/Dialog';
 import TaskManagementForm from './common/TaskManagementForm/TaskManagementForm';
+import { ITask } from '../models';
 
-const Header = () => {
+type PropTypes = {
+  createTaskHandler: (task: ITask) => void;
+};
+
+const Header: FC<PropTypes> = ({ createTaskHandler }) => {
   const [open, setOpen] = useState(false);
   return (
     <header>
@@ -16,7 +21,7 @@ const Header = () => {
         <TaskManagementForm
           title='create new task'
           onCancelClick={() => setOpen(false)}
-          onSaveClick={() => setOpen(false)}
+          onSaveClick={createTaskHandler}
         />
       </Dialog>
     </header>

@@ -1,4 +1,5 @@
-/* General styles */
+@import './styles/master.css';
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -6,7 +7,6 @@ body {
   background-color: #ebeffe;
 }
 
-/* Grid container */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -15,13 +15,12 @@ body {
   padding: 16px;
 }
 
-/* Sidebar */
 .sidebar {
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 260px;
-  height: 728px;
+  /* height: 728px; */
   padding: 32px;
   gap: 24px;
   border-radius: 16px;
@@ -63,7 +62,6 @@ body {
   gap: 8px;
 }
 
-/* Main content */
 .main-content {
   flex: 1 1;
 }
@@ -93,6 +91,7 @@ header h1 {
 header .new-task {
   display: flex;
   font-family: Quicksand;
+  justify-content: center;
   font-size: 18px;
   font-weight: 500;
   line-height: 22.5px;
@@ -119,9 +118,19 @@ header .new-task {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+.new-task:hover span {
+  display: none;
+}
 
 .new-task:hover {
   background-color: #0056b3;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 100%;
 }
 
 /* Task list */
@@ -132,25 +141,33 @@ header .new-task {
 
 .task {
   background: #f9f9f9;
-  padding: 16px;
-  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 24px - 24px);
+  height: 95px;
+  padding: 16px 24px 16px 24px;
+  gap: 0px;
+  border-radius: 16px;
+  opacity: 0px;
 }
 
 .task h3 {
+  position: relative;
   margin: 0;
-  font-size: 1rem;
+  font-family: Quicksand;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 25px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 }
 
-.tags span {
-  background: #e0e7ff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-right: 4px;
-  font-size: 0.85rem;
+.tags {
+  display: flex;
+  gap: 10px;
 }
 
 .actions {
@@ -185,4 +202,77 @@ header .new-task {
 
 .actions .delete:hover {
   color: #dc3545;
+}
+
+.floating-label {
+  color: #8385af;
+  background-color: white;
+  padding: 0 5px;
+  position: absolute;
+  left: 12px;
+  top: -7px;
+  font-family: Quicksand;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  text-transform: capitalize;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.main-content .status-select {
+  background-color: #e1ffde;
+  width: 108px;
+  height: 30px;
+  padding: 6px 8px 6px 8px;
+  gap: 4px;
+  border-radius: 8px;
+  border-width: 0;
+  text-transform: capitalize;
+}
+
+.status-select[aria-label='completed'] {
+  color: #0a7900;
+}
+.status-select[aria-label='incomplete'] {
+  color: #ff6b00;
+}
+
+.status-select option {
+  color: black;
+  content: '8 ';
+}
+
+.description-tooltip {
+  position: absolute;
+  display: none;
+  background-color: #0c1049ee;
+  color: #fff;
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 300px;
+  width: fit-content;
+  line-height: 17.5px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding: 12px;
+  border-radius: 4px;
+  top: 10px;
+  text-overflow: ellipsis; /* Show ellipsis for truncated text */
+
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.task h3:hover .description-tooltip {
+  display: block;
 }
